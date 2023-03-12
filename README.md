@@ -1,1 +1,3 @@
 # extension-eos
+
+WORK IN PROGRESS. NOT READY FOR USE YET!
