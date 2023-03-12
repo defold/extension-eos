@@ -1,0 +1,23 @@
+[bootstrap]
+main_collection = /main/main.collectionc
+
+[script]
+shared_state = 1
+
+[display]
+width = 640
+height = 1136
+
+[android]
+input_method = HiddenInputField
+package = com.defold.extension.eos
+
+[project]
+title = extension-eos
+
+[library]
+include_dirs = extension-eos
+
+[ios]
+bundle_identifier = com.defold.extension.eos
+

@@ -1,0 +1,21 @@
+function init(self)
+	local options = {
+		product_name = "Foobar",
+		product_version = "1.0",
+		product_id    = "11111111111111111111111111111111",
+		sandbox_id    = "11111111111111111111111111111111",
+		deployment_id = "11111111111111111111111111111111",
+		client_id     = "11111111111111111111111111111111",
+		client_secret = "1111111111111111111111111111111111111111111",
+	}
+
+	self.options = options
+	local ok, message = eos.init(options)
+	if not ok then
+		print("Unable to initialize", message)
+		return
+	end
+
+	local a = eos.get_achievement_definitions()
+	pprint(a)
+end

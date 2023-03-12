@@ -1,0 +1,6 @@
+name: EOS
+
+platforms:
+    common:
+        context:
+            flags:      ["-std=c++11"]
