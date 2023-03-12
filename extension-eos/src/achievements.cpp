@@ -5,20 +5,26 @@
 #include "achievements.h"
 
 static EOS_HAchievements g_AchievementsHandle = 0;
-static EOS_NotificationId g_AchievementsUnlockedNotificationId;
+static EOS_NotificationId g_AchievementsUnlockedNotificationId = 0;
 
 
 namespace extEOS
 {
-    bool InitAchievements(EOS_HPlatform platform_handle)
+    bool InitializeAchievements(EOS_HPlatform platform_handle)
     {
         g_AchievementsHandle = EOS_Platform_GetAchievementsInterface(platform_handle);
-        dmLogInfo("InitAchievements %p %p", g_AchievementsHandle, platform_handle);
+        dmLogInfo("InitializeAchievements %p %p", g_AchievementsHandle, platform_handle);
         if (g_AchievementsHandle == 0)
         {
             return 0;
         }
         return 1;
+    }
+
+    void FinalizeAchievements()
+    {
+        g_AchievementsHandle = 0;
+        g_AchievementsUnlockedNotificationId = 0;
     }
 
     int SetAchievementListener(lua_State* L)
@@ -65,6 +71,7 @@ namespace extEOS
         achievementDefinitionsCountOptions.ApiVersion = EOS_ACHIEVEMENTS_GETACHIEVEMENTDEFINITIONCOUNT_API_LATEST;
 
         uint32_t achievementDefintionsCount = EOS_Achievements_GetAchievementDefinitionCount(g_AchievementsHandle, &achievementDefinitionsCountOptions);
+        dmLogInfo("GetAchievementDefinitions count %d", achievementDefintionsCount);
 
         EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions copyOptions = {};
         copyOptions.ApiVersion = EOS_ACHIEVEMENTS_COPYDEFINITIONV2BYACHIEVEMENTID_API_LATEST;

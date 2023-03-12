@@ -6,7 +6,8 @@
 
 namespace extEOS
 {
-	bool InitAchievements(EOS_HPlatform platform_handle);
+	bool InitializeAchievements(EOS_HPlatform platform_handle);
+	void FinalizeAchievements();
 	int SetAchievementListener(lua_State* L);
 	int GetAchievementDefinitions(lua_State* L);
 }

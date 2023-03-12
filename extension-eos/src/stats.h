@@ -5,7 +5,9 @@
 
 namespace extEOS
 {
-    bool InitStats(EOS_HPlatform platform_handle);
+    bool InitializeStats(EOS_HPlatform platform_handle);
+    void FinalizeStats();
+    int GetStatsDefinitions(lua_State* L);
 }
 
 #endif

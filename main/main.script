@@ -9,7 +9,6 @@ function init(self)
 		client_secret = "1111111111111111111111111111111111111111111",
 	}
 
-	self.options = options
 	local ok, message = eos.init(options)
 	if not ok then
 		print("Unable to initialize", message)
@@ -18,4 +17,7 @@ function init(self)
 
 	local a = eos.get_achievement_definitions()
 	pprint(a)
+
+	local s = eos.get_stats_definitions("")
+	pprint(s)
 end
